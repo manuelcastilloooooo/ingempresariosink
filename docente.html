@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EvalTrack | Gestión Docente - IP Virginio Gómez (Avance 20%)</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- HEADER INSTITUCIONAL IPVG -->
+  <header class="header-institucional">
+    <div class="header-container">
+      <div class="brand-section">
+        <img src="logo-ipvg.png" alt="Instituto Profesional Virginio Gómez" class="logo-ipvg">
+        <div class="brand-text">
+          <h1>EvalTrack <span class="badge-brand" style="background: var(--ipvg-orange);">DOCENTE</span></h1>
+          <p>Instituto Profesional Virginio Gómez &bull; Portal de Gestión</p>
+        </div>
+      </div>
+      <nav class="header-nav" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link-btn">Vista Estudiante</a>
+        <a href="docente.html" class="nav-link-btn btn-active-role" aria-current="page">Modo Docente</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-wrapper">
+    <div class="docente-layout">
+
+      <!-- Formulario Inicial de Registro -->
+      <aside class="form-card" aria-labelledby="form-heading">
+        <div class="form-card-header">
+          <h3 id="form-heading">Publicar Evaluación</h3>
+          <p>Estructura inicial del formulario de registro docente.</p>
+        </div>
+        <form id="eval-form" class="form-body">
+          <div class="form-group">
+            <label for="eval-asignatura" class="form-label">Asignatura</label>
+            <input type="text" id="eval-asignatura" class="input-control" placeholder="Ej. Programación Web Frontend" required>
+          </div>
+          <div class="form-group">
+            <label for="eval-tipo" class="form-label">Tipo de Evaluación</label>
+            <select id="eval-tipo" class="select-control" required>
+              <option value="">Seleccione tipo...</option>
+              <option value="Certamen">Certamen</option>
+              <option value="Trabajo">Trabajo</option>
+              <option value="Test">Test Corto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="eval-fecha" class="form-label">Fecha Programada</label>
+            <input type="date" id="eval-fecha" class="input-control" required>
+          </div>
+          <div class="form-group">
+            <label for="eval-ponderacion" class="form-label">Ponderación (%)</label>
+            <input type="text" id="eval-ponderacion" class="input-control" placeholder="Ej. 25%">
+          </div>
+          <button type="submit" class="btn-primary" id="btn-save-eval">Guardar Evaluación</button>
+        </form>
+      </aside>
+
+      <!-- Tabla Preliminar de Gestión -->
+      <section class="table-card" aria-labelledby="table-heading">
+        <div class="form-card-header">
+          <h3 id="table-heading">Evaluaciones Registradas</h3>
+          <p>Maquetación de la tabla de seguimiento.</p>
+        </div>
+        <div class="table-responsive-wrapper">
+          <table class="table-gestion">
+            <thead>
+              <tr>
+                <th>Asignatura</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Ponderación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ingeniería de Software</strong></td>
+                <td><span class="badge badge-tipo-certamen">Certamen 1</span></td>
+                <td>28-10-2026</td>
+                <td>30%</td>
+              </tr>
+              <tr>
+                <td><strong>Programación Web Frontend</strong></td>
+                <td><span class="badge badge-tipo-trabajo">Trabajo 1</span></td>
+                <td>30-10-2026</td>
+                <td>25%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- FASE SIGUIENTE (Próxima entrega):
+             - CRUD dinámico y reprogramación con localStorage
+             - Eliminación y edición directa de evaluaciones
+        -->
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER INSTITUCIONAL -->
+  <footer class="footer-institucional">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="logo-ipvg.png" alt="Instituto Profesional Virginio Gómez" class="footer-logo-ipvg">
+        <div class="footer-text">
+          <strong>Instituto Profesional Virginio Gómez</strong>
+          <p>Desarrollado por Ingenieros Empresarios Inc. &bull; EvalTrack (Avance 20%)</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Enlaces institucionales">
+        <a href="https://www.virginiogomez.cl" target="_blank" rel="noopener">Portal Institucional</a>
+        <a href="index.html">Vista Estudiante</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/evaltrack.js"></script>
+</body>
+</html>
