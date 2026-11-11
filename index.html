@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EvalTrack | Portal Estudiante - IP Virginio Gómez (Avance 20%)</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- HEADER INSTITUCIONAL IPVG -->
+  <header class="header-institucional">
+    <div class="header-container">
+      <div class="brand-section">
+        <img src="logo-ipvg.png" alt="Instituto Profesional Virginio Gómez" class="logo-ipvg">
+        <div class="brand-text">
+          <h1>EvalTrack <span class="badge-brand">IPVG</span></h1>
+          <p>Instituto Profesional Virginio Gómez &bull; Sede Central</p>
+        </div>
+      </div>
+      <nav class="header-nav" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link-btn btn-active-role" aria-current="page">Vista Estudiante</a>
+        <a href="docente.html" class="nav-link-btn">Modo Docente</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-wrapper">
+    
+    <!-- Hero / Resumen del Semestre -->
+    <section class="hero-banner" aria-labelledby="hero-title">
+      <div class="hero-info">
+        <h2 id="hero-title">Calendario Oficial de Evaluaciones</h2>
+        <p>Consulta las fechas actualizadas de certámenes, tests y entregas de tu carrera.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-value">4</div>
+          <div class="stat-label">Evaluaciones</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value warning">1</div>
+          <div class="stat-label">Reprogramada</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra de Filtros (Estructura inicial) -->
+    <section class="controls-card" aria-label="Filtros y búsqueda">
+      <form class="filter-grid" id="filter-form" onsubmit="return false;">
+        <div class="form-group">
+          <label for="search-input" class="form-label">Buscar Asignatura</label>
+          <input type="text" id="search-input" class="input-control" placeholder="Ej. Programación...">
+        </div>
+        <div class="form-group">
+          <label for="filter-asignatura" class="form-label">Asignatura</label>
+          <select id="filter-asignatura" class="select-control">
+            <option value="all">Todas las asignaturas</option>
+            <option value="Ingeniería de Software">Ingeniería de Software</option>
+            <option value="Programación Web Frontend">Programación Web Frontend</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn-secondary" id="btn-reset-filters">Restablecer</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Listado en Tarjetas (Maquetación inicial) -->
+    <section class="eval-section" aria-labelledby="list-title">
+      <div class="section-title-bar">
+        <h3 id="list-title">Cronograma de Evaluaciones <span class="eval-counter">(Maquetación preliminar)</span></h3>
+      </div>
+
+      <div class="eval-cards-grid">
+        <!-- Tarjeta de Ejemplo 1: Certamen -->
+        <article class="eval-card tipo-certamen">
+          <div class="card-top">
+            <div class="badges-group">
+              <span class="badge badge-tipo-certamen">Certamen 1</span>
+              <span class="badge badge-reprogramada">Fecha Reprogramada</span>
+            </div>
+            <span class="badge badge-ponderacion">30%</span>
+          </div>
+          <h4 class="card-title">Ingeniería de Software</h4>
+          <div class="card-meta-list">
+            <p>Sección: <strong>Sección 01-V</strong></p>
+            <p>Docente: <strong>Prof. Rodrigo Morales</strong></p>
+          </div>
+          <div class="card-footer-info">
+            <span class="fecha-valor">Mié, 28 Oct 2026</span>
+            <span class="dias-restantes-pill urgente">En 6 días</span>
+          </div>
+        </article>
+
+        <!-- Tarjeta de Ejemplo 2: Trabajo -->
+        <article class="eval-card tipo-trabajo">
+          <div class="card-top">
+            <div class="badges-group">
+              <span class="badge badge-tipo-trabajo">Trabajo 1</span>
+            </div>
+            <span class="badge badge-ponderacion">25%</span>
+          </div>
+          <h4 class="card-title">Programación Web Frontend</h4>
+          <div class="card-meta-list">
+            <p>Sección: <strong>Sección 01-V</strong></p>
+            <p>Docente: <strong>Prof. Marcela Soto</strong></p>
+          </div>
+          <div class="card-footer-info">
+            <span class="fecha-valor">Vie, 30 Oct 2026</span>
+            <span class="dias-restantes-pill urgente">En 8 días</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- FASE SIGUIENTE (Próxima entrega):
+           - Módulo interactivo de vista calendario mensual (RF-07)
+           - Modales dinámicos de detalle y confirmación
+      -->
+    </section>
+
+  </main>
+
+  <!-- FOOTER INSTITUCIONAL -->
+  <footer class="footer-institucional">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="logo-ipvg.png" alt="Instituto Profesional Virginio Gómez" class="footer-logo-ipvg">
+        <div class="footer-text">
+          <strong>Instituto Profesional Virginio Gómez</strong>
+          <p>Desarrollado por Ingenieros Empresarios Inc. &bull; EvalTrack (Avance 20%)</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Enlaces institucionales">
+        <a href="https://www.virginiogomez.cl" target="_blank" rel="noopener">Portal Institucional</a>
+        <a href="docente.html">Modo Docente</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/evaltrack.js"></script>
+</body>
+</html>
