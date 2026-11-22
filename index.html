@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EvalTrack - Calendario oficial y centralizado de evaluaciones para estudiantes del Instituto Profesional Virginio Gómez.">
+  <title>EvalTrack | Portal Estudiante - IP Virginio Gómez</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER INSTITUCIONAL - IP VIRGINIO GÓMEZ
+       ====================================================================== -->
+  <header class="header-institucional">
+    <div class="header-container">
+      <div class="brand-section">
+        <div class="brand-logo-icon" title="Instituto Profesional Virginio Gómez">
+          <img src="logo-ipvg.png" alt="Instituto Profesional Virginio Gómez" class="logo-ipvg">
+        </div>
+        <div class="brand-text">
+          <h1>
+            EvalTrack
+            <span class="badge-brand">IPVG</span>
+          </h1>
+          <p>Instituto Profesional Virginio Gómez &bull; Sede Central</p>
+        </div>
+      </div>
+
+      <nav class="header-nav" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link-btn btn-active-role" aria-current="page">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+          </svg>
+          <span>Vista Estudiante</span>
+        </a>
+        <a href="docente.html" class="nav-link-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+          </svg>
+          <span>Modo Docente</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       CONTENIDO PRINCIPAL
+       ====================================================================== -->
+  <main class="main-wrapper">
+    
+    <!-- Hero / Resumen del Semestre -->
+    <section class="hero-banner" aria-labelledby="hero-title">
+      <div class="hero-info">
+        <h2 id="hero-title">Calendario Oficial de Evaluaciones</h2>
+        <p>Consulta las fechas actualizadas de certámenes, tests y entregas de tu carrera en tiempo real.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-value">6</div>
+          <div class="stat-label">Evaluaciones</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">2</div>
+          <div class="stat-label">Próximos 7 días</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value warning">1</div>
+          <div class="stat-label">Reprogramada</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra de Filtros, Búsqueda y Selector de Vista (RF-02, RF-07) -->
+    <section class="controls-card" aria-label="Filtros y opciones de visualización">
+      <div class="controls-header">
+        <div class="section-title-bar" style="margin-bottom: 0;">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ipvg-orange);">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+            </svg>
+            Filtros de Búsqueda
+          </h3>
+        </div>
+
+        <!-- Conmutador Lista / Calendario (RF-07) -->
+        <div class="view-toggles" role="tablist" aria-label="Cambio de visualización">
+          <button type="button" class="view-btn active" role="tab" aria-selected="true" id="btn-view-list">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+            <span>Lista</span>
+          </button>
+          <button type="button" class="view-btn" role="tab" aria-selected="false" id="btn-view-cal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>Calendario</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Formulario de Filtros Dinámicos -->
+      <form class="filter-grid" id="filter-form" onsubmit="return false;">
+        <!-- Buscador por texto -->
+        <div class="form-group">
+          <label for="search-input" class="form-label">Buscar Asignatura o Docente</label>
+          <div class="input-with-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="search-input" class="input-control" placeholder="Ej. Programación, Base de Datos...">
+          </div>
+        </div>
+
+        <!-- Filtro por Asignatura -->
+        <div class="form-group">
+          <label for="filter-asignatura" class="form-label">Asignatura</label>
+          <select id="filter-asignatura" class="select-control">
+            <option value="all">Todas las asignaturas</option>
+            <option value="Ingeniería de Software">Ingeniería de Software</option>
+            <option value="Programación Web Frontend">Programación Web Frontend</option>
+            <option value="Base de Datos II">Base de Datos II</option>
+            <option value="Redes y Telecomunicaciones">Redes y Telecomunicaciones</option>
+          </select>
+        </div>
+
+        <!-- Filtro por Sección -->
+        <div class="form-group">
+          <label for="filter-seccion" class="form-label">Sección</label>
+          <select id="filter-seccion" class="select-control">
+            <option value="all">Todas</option>
+            <option value="Sección 01-V">Sección 01-V</option>
+            <option value="Sección 02-D">Sección 02-D</option>
+          </select>
+        </div>
+
+        <!-- Filtro por Tipo de Evaluación -->
+        <div class="form-group">
+          <label for="filter-tipo" class="form-label">Tipo</label>
+          <select id="filter-tipo" class="select-control">
+            <option value="all">Todos los tipos</option>
+            <option value="Certamen">Certamen</option>
+            <option value="Trabajo">Trabajo / Proyecto</option>
+            <option value="Test">Test Corto</option>
+            <option value="Examen">Examen</option>
+          </select>
+        </div>
+
+        <!-- Botón para limpiar filtros -->
+        <div class="form-group">
+          <button type="button" class="btn-secondary" id="btn-reset-filters">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+            </svg>
+            <span>Restablecer</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ======================================================================
+         VISTA 1: LISTADO EN TARJETAS CRONOLÓGICAS (RF-01, RF-03)
+         ====================================================================== -->
+    <section class="eval-section" id="view-cards-container" aria-labelledby="list-title">
+      <div class="section-title-bar">
+        <h3 id="list-title">
+          <span>Cronograma de Evaluaciones</span>
+          <span class="eval-counter">6 resultados</span>
+        </h3>
+      </div>
+
+      <div class="eval-cards-grid">
+
+        <!-- Tarjeta 1: Certamen (Reprogramada - RF-03) -->
+        <article class="eval-card tipo-certamen">
+          <div>
+            <div class="card-top">
+              <div class="badges-group">
+                <span class="badge badge-tipo-certamen">Certamen 1</span>
+                <!-- Indicador visual de reprogramación -->
+                <span class="badge badge-reprogramada">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                  Fecha Reprogramada
+                </span>
+              </div>
+              <span class="badge badge-ponderacion">30%</span>
+            </div>
+
+            <h4 class="card-title">Ingeniería de Software</h4>
+
+            <!-- Mensaje de aviso de reprogramación para el estudiante -->
+            <div class="reprogramada-notice">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              <span>Atención: Modificada del 24 de Octubre al 28 de Octubre por acuerdo docente.</span>
+            </div>
+
+            <div class="card-meta-list">
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Sección: <strong>Sección 01-V</strong></span>
+              </div>
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span>Docente: <strong>Prof. Rodrigo Morales</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-info">
+            <div class="fecha-box">
+              <span class="fecha-label">Fecha Oficial</span>
+              <span class="fecha-valor">Mié, 28 Oct 2026</span>
+            </div>
+            <div class="dias-restantes-pill urgente">En 6 días</div>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2: Trabajo Práctico -->
+        <article class="eval-card tipo-trabajo">
+          <div>
+            <div class="card-top">
+              <div class="badges-group">
+                <span class="badge badge-tipo-trabajo">Trabajo 1</span>
+              </div>
+              <span class="badge badge-ponderacion">25%</span>
+            </div>
+
+            <h4 class="card-title">Programación Web Frontend</h4>
+
+            <div class="card-meta-list">
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Sección: <strong>Sección 01-V</strong></span>
+              </div>
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span>Docente: <strong>Prof. Marcela Soto</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-info">
+            <div class="fecha-box">
+              <span class="fecha-label">Fecha Oficial</span>
+              <span class="fecha-valor">Vie, 30 Oct 2026</span>
+            </div>
+            <div class="dias-restantes-pill proximo">En 8 días</div>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3: Test Corto -->
+        <article class="eval-card tipo-test">
+          <div>
+            <div class="card-top">
+              <div class="badges-group">
+                <span class="badge badge-tipo-test">Test 2</span>
+              </div>
+              <span class="badge badge-ponderacion">15%</span>
+            </div>
+
+            <h4 class="card-title">Base de Datos II</h4>
+
+            <div class="card-meta-list">
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Sección: <strong>Sección 02-D</strong></span>
+              </div>
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span>Docente: <strong>Prof. Andrea Fuentes</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-info">
+            <div class="fecha-box">
+              <span class="fecha-label">Fecha Oficial</span>
+              <span class="fecha-valor">Mar, 03 Nov 2026</span>
+            </div>
+            <div class="dias-restantes-pill">En 12 días</div>
+          </div>
+        </article>
+
+        <!-- Tarjeta 4: Certamen 2 -->
+        <article class="eval-card tipo-certamen">
+          <div>
+            <div class="card-top">
+              <div class="badges-group">
+                <span class="badge badge-tipo-certamen">Certamen 2</span>
+              </div>
+              <span class="badge badge-ponderacion">30%</span>
+            </div>
+
+            <h4 class="card-title">Redes y Telecomunicaciones</h4>
+
+            <div class="card-meta-list">
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Sección: <strong>Sección 01-V</strong></span>
+              </div>
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span>Docente: <strong>Prof. Carlos Henríquez</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-info">
+            <div class="fecha-box">
+              <span class="fecha-label">Fecha Oficial</span>
+              <span class="fecha-valor">Jue, 12 Nov 2026</span>
+            </div>
+            <div class="dias-restantes-pill">En 21 días</div>
+          </div>
+        </article>
+
+        <!-- Tarjeta 5: Trabajo Final -->
+        <article class="eval-card tipo-trabajo">
+          <div>
+            <div class="card-top">
+              <div class="badges-group">
+                <span class="badge badge-tipo-trabajo">Trabajo Final</span>
+              </div>
+              <span class="badge badge-ponderacion">35%</span>
+            </div>
+
+            <h4 class="card-title">Programación Web Frontend</h4>
+
+            <div class="card-meta-list">
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Sección: <strong>Sección 01-V</strong></span>
+              </div>
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span>Docente: <strong>Prof. Marcela Soto</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-info">
+            <div class="fecha-box">
+              <span class="fecha-label">Fecha Oficial</span>
+              <span class="fecha-valor">Lun, 23 Nov 2026</span>
+            </div>
+            <div class="dias-restantes-pill">En 32 días</div>
+          </div>
+        </article>
+
+        <!-- Tarjeta 6: Examen Final -->
+        <article class="eval-card tipo-examen">
+          <div>
+            <div class="card-top">
+              <div class="badges-group">
+                <span class="badge badge-tipo-examen">Examen</span>
+              </div>
+              <span class="badge badge-ponderacion">40%</span>
+            </div>
+
+            <h4 class="card-title">Ingeniería de Software</h4>
+
+            <div class="card-meta-list">
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Sección: <strong>Sección 01-V</strong></span>
+              </div>
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span>Docente: <strong>Prof. Rodrigo Morales</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-info">
+            <div class="fecha-box">
+              <span class="fecha-label">Fecha Oficial</span>
+              <span class="fecha-valor">Jue, 10 Dic 2026</span>
+            </div>
+            <div class="dias-restantes-pill">En 49 días</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VISTA 2: CALENDARIO MENSUAL (RF-07)
+         ====================================================================== -->
+    <section class="calendar-view-container" id="view-calendar-container" aria-label="Vista de calendario mensual" style="display: none;">
+      <div class="calendar-header">
+        <div class="calendar-title-group">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ipvg-blue-primary);">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <h3 class="calendar-month-title">Octubre 2026</h3>
+        </div>
+
+        <div class="calendar-nav-controls">
+          <button type="button" class="cal-nav-btn" aria-label="Mes anterior">&larr; Anterior</button>
+          <button type="button" class="cal-nav-btn" aria-label="Mes actual">Hoy</button>
+          <button type="button" class="cal-nav-btn" aria-label="Mes siguiente">Siguiente &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Cuadrícula 7 Columnas (Lunes a Domingo) -->
+      <div class="calendar-grid">
+        <!-- Cabeceras de días -->
+        <div class="calendar-day-header">Lun</div>
+        <div class="calendar-day-header">Mar</div>
+        <div class="calendar-day-header">Mié</div>
+        <div class="calendar-day-header">Jue</div>
+        <div class="calendar-day-header">Vie</div>
+        <div class="calendar-day-header">Sáb</div>
+        <div class="calendar-day-header">Dom</div>
+
+        <!-- Fila 1 (Sept/Oct) -->
+        <div class="calendar-day-cell other-month"><span class="day-number">28</span></div>
+        <div class="calendar-day-cell other-month"><span class="day-number">29</span></div>
+        <div class="calendar-day-cell other-month"><span class="day-number">30</span></div>
+        <div class="calendar-day-cell"><span class="day-number">1</span></div>
+        <div class="calendar-day-cell"><span class="day-number">2</span></div>
+        <div class="calendar-day-cell"><span class="day-number">3</span></div>
+        <div class="calendar-day-cell"><span class="day-number">4</span></div>
+
+        <!-- Fila 2 -->
+        <div class="calendar-day-cell"><span class="day-number">5</span></div>
+        <div class="calendar-day-cell"><span class="day-number">6</span></div>
+        <div class="calendar-day-cell"><span class="day-number">7</span></div>
+        <div class="calendar-day-cell"><span class="day-number">8</span></div>
+        <div class="calendar-day-cell"><span class="day-number">9</span></div>
+        <div class="calendar-day-cell"><span class="day-number">10</span></div>
+        <div class="calendar-day-cell"><span class="day-number">11</span></div>
+
+        <!-- Fila 3 -->
+        <div class="calendar-day-cell"><span class="day-number">12</span></div>
+        <div class="calendar-day-cell"><span class="day-number">13</span></div>
+        <div class="calendar-day-cell"><span class="day-number">14</span></div>
+        <div class="calendar-day-cell"><span class="day-number">15</span></div>
+        <div class="calendar-day-cell"><span class="day-number">16</span></div>
+        <div class="calendar-day-cell"><span class="day-number">17</span></div>
+        <div class="calendar-day-cell"><span class="day-number">18</span></div>
+
+        <!-- Fila 4 -->
+        <div class="calendar-day-cell"><span class="day-number">19</span></div>
+        <div class="calendar-day-cell"><span class="day-number">20</span></div>
+        <div class="calendar-day-cell"><span class="day-number">21</span></div>
+        <!-- Día de hoy -->
+        <div class="calendar-day-cell is-today">
+          <div class="day-cell-top">
+            <span class="day-number">22</span>
+            <small style="font-size: 0.65rem; color: #16a34a; font-weight:700;">HOY</small>
+          </div>
+        </div>
+        <div class="calendar-day-cell"><span class="day-number">23</span></div>
+        <div class="calendar-day-cell"><span class="day-number">24</span></div>
+        <div class="calendar-day-cell"><span class="day-number">25</span></div>
+
+        <!-- Fila 5 -->
+        <div class="calendar-day-cell"><span class="day-number">26</span></div>
+        <div class="calendar-day-cell"><span class="day-number">27</span></div>
+        <div class="calendar-day-cell">
+          <div class="day-cell-top">
+            <span class="day-number">28</span>
+          </div>
+          <div class="day-events">
+            <span class="cal-event-pill tipo-certamen reprogramada" title="Ing. de Software (Reprogramado)">
+              &#9888; Certamen 1 (Ing. Soft.)
+            </span>
+          </div>
+        </div>
+        <div class="calendar-day-cell"><span class="day-number">29</span></div>
+        <div class="calendar-day-cell">
+          <div class="day-cell-top">
+            <span class="day-number">30</span>
+          </div>
+          <div class="day-events">
+            <span class="cal-event-pill tipo-trabajo" title="Programación Web Frontend">
+              Trabajo 1 (Prog. Web)
+            </span>
+          </div>
+        </div>
+        <div class="calendar-day-cell"><span class="day-number">31</span></div>
+        <div class="calendar-day-cell other-month"><span class="day-number">1</span></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       FOOTER INSTITUCIONAL
+       ====================================================================== -->
+  <footer class="footer-institucional">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo-container" title="Instituto Profesional Virginio Gómez">
+          <img src="logo-ipvg.png" alt="Instituto Profesional Virginio Gómez" class="footer-logo-ipvg">
+        </div>
+        <div class="footer-text">
+          <strong>Instituto Profesional Virginio Gómez</strong>
+          <p>Desarrollado por Ingenieros Empresarios Inc. &bull; EvalTrack v1.0</p>
+        </div>
+      </div>
+
+      <nav class="footer-links" aria-label="Enlaces institucionales">
+        <a href="https://www.virginiogomez.cl" target="_blank" rel="noopener">Portal Institucional</a>
+        <a href="#">Reglamento Académico</a>
+        <a href="docente.html">Acceso Docente</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Script con la lógica de negocio, persistencia y filtros de EvalTrack -->
+  <script src="js/evaltrack.js"></script>
+</body>
+</html>
