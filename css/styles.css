@@ -681,6 +681,7 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
+<<<<<<< HEAD
    VISTA CALENDARIO MENSUAL (RF-07)
    ========================================================================== */
 .calendar-view-container {
@@ -858,6 +859,12 @@ button, input, select, textarea {
 .cal-event-pill.reprogramada {
   border-right: 2px solid var(--ipvg-orange);
 }
+=======
+   VISTA CALENDARIO MENSUAL (RF-07) - PREPARADA PARA FASE FINAL (100%)
+   Los estilos específicos de la cuadrícula matricial de 42 celdas y pastillas
+   de eventos mensuales se integran en la entrega final.
+   ========================================================================== */
+>>>>>>> 44ab2fac6821ba3dd321feda5131b39ce822007b
 
 /* ==========================================================================
    PÁGINA DOCENTE / FORMULARIO Y GESTIÓN
@@ -1252,6 +1259,7 @@ html, body {
   }
 }
 
+<<<<<<< HEAD
 /* Reglas ultra-compactas para móviles S (320px - 375px) */
 @media (max-width: 480px) {
   .main-wrapper {
@@ -1445,6 +1453,8 @@ html, body {
   }
 }
 
+=======
+>>>>>>> 44ab2fac6821ba3dd321feda5131b39ce822007b
 /* ==========================================================================
    NOTIFICACIONES TOAST (ALERTAS FLOTANTES)
    ========================================================================== */
